@@ -1,0 +1,6 @@
+{
+  "name": "CodeMind AI – Memory-Powered Code Review Agent",
+  "description": "Intelligent AI code review agent powered by Gemini and Hindsight long-term memory for personalized, consistent code quality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
