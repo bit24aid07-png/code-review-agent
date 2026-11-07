@@ -105,26 +105,32 @@ If you want to run the dedicated Python FastAPI backend:
 
 ---
 
-## 🧠 Connecting Real Hindsight (Docker)
+## 🧠 Hindsight Memory Integration
 
-To connect the official Hindsight memory engine:
+CodeMind AI is designed to use Hindsight as its long-term memory engine.
+
+The memory workflow includes:
+
+- **Retain:** Store developer preferences, coding standards, and confirmed feedback.
+- **Recall:** Retrieve relevant memories before reviewing new code.
+- **Personalize:** Use recalled context to make code reviews more relevant to developer preferences.
+
+### Current Status
+
+CodeMind AI currently supports a local standby memory store when the Hindsight server is unavailable.
+
+To enable the live Hindsight integration, the Hindsight server must be running and accessible at the configured endpoint.
+
+Default endpoint:
+
+```text
+http://localhost:8888
+```
+
+To run Hindsight using Docker:
 
 ```bash
 docker run -d -p 8888:8888 vectorize/hindsight
 ```
 
-Once running:
-- Hindsight listens at `http://localhost:8888`.
-- CodeMind AI will automatically detect the connection and switch its status badge from `[Local Standby]` to `[Hindsight Live Active]`.
-- No mock data or pretending: the status indicator displays real-time health pings!
-
----
-
-## 🔑 Required Credentials
-
-| Environment Variable | Required | Description |
-|---|---|---|
-| `GEMINI_API_KEY` | **Yes** | Google Gemini API key for running code analysis. (Configured in AI Studio Secrets) |
-| `HINDSIGHT_API_URL` | Optional | URL of Hindsight instance (defaults to `http://localhost:8888`). |
-| `HINDSIGHT_API_KEY` | Optional | API key if connecting to a protected remote Hindsight cluster. |
-| `HINDSIGHT_BANK_ID` | Optional | Namespace/Bank ID for developer memories (default: `codemind-developer`). |
+**Note:** Live Hindsight connectivity has not yet been verified in this development setup. The application can use its local standby memory mode in the meantime.
